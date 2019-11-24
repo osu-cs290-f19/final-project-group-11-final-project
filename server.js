@@ -40,7 +40,7 @@ SERVER_PORT = process.env.PORT; // this is the port that the server will listen 
 // set with PORT environment variable.
 
 if (SERVER_PORT == undefined){
-	// If the PORT variable does not exist, default to port 3000
+	// If the PORT variable does not exist, default to port 8000
 	SERVER_PORT = 8000;
 }
 
