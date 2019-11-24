@@ -1,0 +1,22 @@
+{
+  "name": "final-project-group-11-final-project",
+  "version": "1.0.0",
+  "description": "Node package for our final project in CS290",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osu-cs290-f19/final-project-group-11-final-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osu-cs290-f19/final-project-group-11-final-project/issues"
+  },
+  "homepage": "https://github.com/osu-cs290-f19/final-project-group-11-final-project#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
