@@ -37,7 +37,7 @@ app.get('*', function (req, res, next){
 
 /////START//////////////--Websocket Functions--////////////////////////////////////////
 
-app.ws('/', function(ws, req) {
+app.ws('/game/connection', function(ws, req) {
   ws.on('message', function(msg) {
     console.log(msg);
 	ws.send(msg);
