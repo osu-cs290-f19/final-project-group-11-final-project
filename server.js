@@ -16,6 +16,7 @@ var process = require('process');
 //////Start/////////////--File Hosting--///////////////////////////////////////////////
 
 var app = express();
+var expressWs = require('express-ws')(app); // this is used for our game connections
 
 app.get('/', function(req, res, next){
 	// set our default page to index.html
@@ -23,7 +24,7 @@ app.get('/', function(req, res, next){
 });
 
 
-express.use(express.static('public')); // any files in public can be requested and will be returned.
+app.use(express.static('public')); // any files in public can be requested and will be returned.
 
 app.get('*', function (req, res, next){
 	// if the file requested does not have a get setup or is not static we send the 404.html page
@@ -33,6 +34,18 @@ app.get('*', function (req, res, next){
 });
 
 //////End///////////////--File Hosting--///////////////////////////////////////////////
+
+/////START//////////////--Websocket Functions--////////////////////////////////////////
+
+app.ws('/', function(ws, req) {
+  ws.on('message', function(msg) {
+    console.log(msg);
+	ws.send(msg);
+  });
+  console.log('socket', req.testing);
+});
+
+/////END////////////////--Websocket Functions--////////////////////////////////////////
 
 /////--SERVER START--//////////////////////////
 
