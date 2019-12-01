@@ -10,13 +10,24 @@
 var express = require('express');
 var process = require('process');
 
-// End Imports
-
-
-//////Start/////////////--File Hosting--///////////////////////////////////////////////
-
 var app = express();
 var expressWs = require('express-ws')(app); // this is used for our game connections
+
+// End Imports
+
+/////START//////////////--Websocket Functions--////////////////////////////////////////
+
+app.ws('/game/connection', function(ws, req) {
+	ws.on('message', function(msg) {
+		console.log(msg);
+		ws.send(msg);
+	});
+	console.log('socket', req.testing);
+});
+
+/////END////////////////--Websocket Functions--////////////////////////////////////////
+
+//////Start/////////////--File Hosting--///////////////////////////////////////////////
 
 app.get('/', function(req, res, next){
 	// set our default page to index.html
@@ -34,18 +45,6 @@ app.get('*', function (req, res, next){
 });
 
 //////End///////////////--File Hosting--///////////////////////////////////////////////
-
-/////START//////////////--Websocket Functions--////////////////////////////////////////
-
-app.ws('/game/connection', function(ws, req) {
-  ws.on('message', function(msg) {
-    console.log(msg);
-	ws.send(msg);
-  });
-  console.log('socket', req.testing);
-});
-
-/////END////////////////--Websocket Functions--////////////////////////////////////////
 
 /////--SERVER START--//////////////////////////
 
