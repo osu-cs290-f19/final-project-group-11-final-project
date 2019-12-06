@@ -13,16 +13,122 @@ var process = require('process');
 var app = express();
 var expressWs = require('express-ws')(app); // this is used for our game connections
 
+var leaderboard = require('./leaderboard.json');
+
 // End Imports
+
+/////START//////////////--Game Functions--/////////////////////////////////////////////
+
+function check_leaderboard (streak){
+	console.log("Checking streak of: " + streak);
+	for (var i = 0; i < leaderboard.length; i++){
+		if (leaderboard[i].streak < streak){
+			return i
+		}
+	}
+	return -1
+}
+
+/////END////////////////--Game Functions--/////////////////////////////////////////////
 
 /////START//////////////--Websocket Functions--////////////////////////////////////////
 
 app.ws('/game/connection', function(ws, req) {
+	var winstreak = 0; // winstreak of the current connected user.
+	var highstreak = 0;
 	ws.on('message', function(msg) {
-		console.log(msg);
-		ws.send(msg);
+		var command = msg[0];
+		console.log(command);
+		if (command === "s"){
+			// connection created with this message.
+			win_streak = 0; // reset the winstreak on a new game.
+		}
+		else if (command === "w"){
+			// client is sending their weapon choice.
+			bot_choice = Math.floor(Math.random() * 99); // random integer between 0 and 98.
+			player_choice = msg[1];
+			
+			if (bot_choice < 33) {
+				//bot choice of rock
+				if (player_choice == 2){
+					winstreak += 1;
+					if (winstreak > highstreak){
+						highstreak = winstreak;
+					}
+					ws.send('gw');
+				}
+				else if (player_choice == 3){
+					if (winstreak > highstreak){
+						highstreak = winstreak;
+					}
+					winstreak = 0;
+					ws.send('gl');
+				}
+				else {
+					ws.send('gt');
+				}
+			}
+			else if (bot_choice < 66) {
+				//bot choice of paper
+				if (player_choice == 3){
+					winstreak += 1;
+					if (winstreak > highstreak){
+						highstreak = winstreak;
+					}
+					ws.send('gw');
+				}
+				else if (player_choice == 1){
+					if (winstreak > highstreak){
+						highstreak = winstreak;
+					}
+					winstreak = 0;
+					ws.send('gl');
+				}
+				else {
+					ws.send('gt');
+				}
+			}
+			else {
+				//bot choice of scissors
+				if (player_choice == 1){
+					winstreak += 1;
+					if (winstreak > highstreak){
+						highstreak = winstreak;
+					}
+					ws.send('gw');
+				}
+				else if (player_choice == 2){
+					if (winstreak > highstreak){
+						highstreak = winstreak;
+					}
+					winstreak = 0;
+					ws.send('gl');
+				}
+				else {
+					ws.send('gt');
+				}
+			}
+		}
+		else if (command === "l"){
+			console.log("Store leaderboard request");
+			//client is trying to save to leaderboard.
+			var name = msg.substring(1);
+			var placement = check_leaderboard(highstreak);
+			console.log("Placement of: " + placement);
+			if (placement >= 0){
+				leaderboard.splice(placement, 0, {
+					name: name,
+					streak: highstreak
+				});
+				leaderboard.splice(10, 1);
+				ws.send("l"+placement);
+			}
+			else {
+				ws.send("lN");
+			}
+			highstreak = 0;
+		}
 	});
-	console.log('socket', req.testing);
 });
 
 /////END////////////////--Websocket Functions--////////////////////////////////////////
