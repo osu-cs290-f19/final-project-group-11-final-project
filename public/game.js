@@ -45,6 +45,6 @@ socket.addEventListener('message', function (event) {
 	}
 });
 
-document.getElementsByClassName('player-rock')[0].addEventListener('click', send_game_choice);
-document.getElementsByClassName('player-paper')[0].addEventListener('click', send_game_choice);
-document.getElementsByClassName('player-scissors')[0].addEventListener('click', send_game_choice);
+document.getElementById('player-rock').addEventListener('click', send_game_choice);
+document.getElementById('player-paper').addEventListener('click', send_game_choice);
+document.getElementById('player-scissors').addEventListener('click', send_game_choice);
