@@ -24,9 +24,8 @@ var leaderboard = require('./leaderboard.json');
 /////START//////////////--Game Functions--/////////////////////////////////////////////
 
 function check_leaderboard (streak){
-	console.log("Checking streak of: " + streak);
 	for (var i = 0; i < leaderboard.length; i++){
-		if (leaderboard[i].streak < streak){
+		if (leaderboard[i].playerScore < streak){
 			return i
 		}
 	}
@@ -42,7 +41,6 @@ app.ws('/game/connection', function(ws, req) {
 	var highstreak = 0;
 	ws.on('message', function(msg) {
 		var command = msg[0];
-		console.log(command);
 		if (command === "s"){
 			// connection created with this message.
 			win_streak = 0; // reset the winstreak on a new game.
@@ -114,11 +112,9 @@ app.ws('/game/connection', function(ws, req) {
 			}
 		}
 		else if (command === "l"){
-			console.log("Store leaderboard request");
 			//client is trying to save to leaderboard.
 			var name = msg.substring(1);
 			var placement = check_leaderboard(highstreak);
-			console.log("Placement of: " + placement);
 			if (placement >= 0){
 				leaderboard.splice(placement, 0, {
 					playerName: name,
