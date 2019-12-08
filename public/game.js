@@ -92,7 +92,7 @@ function gameFinish (outcome){
 		outcomePopupText.textContent = "You Tied!"
 	}
 	
-	setTimeout(makeSelectionClickable, 1500);
+	setTimeout(makeSelectionClickable, 1000);
 }
 
 function showHighscoreInputModal(placement){
