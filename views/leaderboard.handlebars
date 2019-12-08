@@ -1,3 +1,11 @@
 <section id="leaderboard-container">
-  {{>highscoreTemplate highscoreData}}
+  {{#each highscoreData}}
+    {{> highscoreTemplate}}
+  {{/each}}
 </section>
+
+<div class="button-container">
+  <div><a href='/'><button>Home</button></a></div>
+  <div><a href='game'><button>Play Now</button></a></div>
+  <div><a href='about'><button>About</button></a></div>
+</div>

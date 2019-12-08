@@ -1,16 +1,37 @@
 // Create WebSocket connection.
 const socket = new WebSocket('ws://localhost:8000/game/connection');
 
+var selected = null;
+var enemySelected = null;
+var selectionClickable = true;
+
+function highlightElements (){
+	// this function will highlight elements based on what is selected.
+}
+
+function updateWinstreak (winstreak){
+	// this function will update our visible winstreak.
+}
+
+function gameFinish (){
+	// this function will pop up the game finished modal and will update it.
+}
+
 function send_game_choice (event) {
-	var player_choice = event.target.alt;
-	if (player_choice == "Rock"){
-		socket.send("w1");
-	}
-	else if (player_choice == "Paper"){
-		socket.send("w2");
-	}
-	else if (player_choice == "Scissors"){
-		socket.send("w3");
+	if (selectionClickable){
+		var player_choice = event.target.alt;
+		if (player_choice == "Rock"){
+			selected = "ROCK";
+			socket.send("w1");
+		}
+		else if (player_choice == "Paper"){
+			selected = "PAPER";
+			socket.send("w2");
+		}
+		else if (player_choice == "Scissors"){
+			selected = "SCISSORS";
+			socket.send("w3");
+		}
 	}
 }
 
@@ -29,9 +50,21 @@ socket.addEventListener('message', function (event) {
 	if (command === "g"){
 		var outcome = event.data[1];
 		if (outcome === "l"){
-			// for now just sending a leaderboard request on every loss.
+			// lost game, #TODO show modal
 			console.log("Sending leaderboard store request");
-			socket.send("lBenny"); // placeholder auto name of Benny, when the modal is made it wont be
+			
+			if (selected == "ROCK"){
+				enemySelected = "PAPER";
+			}
+			else if (selected == "PAPER"){
+				enemySelected = "SCISSORS";
+			}
+			else if (selected == "SCISSORS"){
+				enemySelected = "ROCK";
+			}
+			
+			socket.send("r"); // placeholder auto name of Benny, when the modal is made it wont be
+			
 		}
 	}
 	else if (command === "l"){
@@ -41,6 +74,7 @@ socket.addEventListener('message', function (event) {
 		}
 		else {
 			console.log("Congratulations! You earned a spot on the leaderboards: " + (Number(placement)+1));
+			socket.send("lBenny"); //save leaderboard spot, #TODO get name from input box
 		}
 	}
 });
