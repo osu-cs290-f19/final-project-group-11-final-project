@@ -9,8 +9,12 @@
 
 var express = require('express');
 var process = require('process');
+var exphbs = require("express-handlebars")
+var fs = require('fs');
 
 var app = express();
+app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 var expressWs = require('express-ws')(app); // this is used for our game connections
 
 var leaderboard = require('./leaderboard.json');
@@ -117,16 +121,29 @@ app.ws('/game/connection', function(ws, req) {
 			console.log("Placement of: " + placement);
 			if (placement >= 0){
 				leaderboard.splice(placement, 0, {
-					name: name,
-					streak: highstreak
+					playerName: name,
+					playerScore: highstreak
 				});
 				leaderboard.splice(10, 1);
+				fs.writeFile(__dirname + "/leaderboard.json",
+							 JSON.stringify(leaderboard, undefined, 2), 
+							 function (err){
+								 if (err){
+									console.log("File save error");
+								 }
+							 });
+			}
+			highstreak = 0;
+		}
+		else if (command === "r"){
+			// client is requesting leaderboard postion
+			var placement = check_leaderboard(highstreak);
+			if (placement >= 0){
 				ws.send("l"+placement);
 			}
 			else {
 				ws.send("lN");
 			}
-			highstreak = 0;
 		}
 	});
 });
@@ -135,19 +152,36 @@ app.ws('/game/connection', function(ws, req) {
 
 //////Start/////////////--File Hosting--///////////////////////////////////////////////
 
+app.use(express.static('public')); // any files in public can be requested and will be returned.
+
 app.get('/', function(req, res, next){
 	// set our default page to index.html
-	res.status(200).sendFile(__dirname + "/public/index.html");
+	res.status(200).render('index');
 });
 
+app.get('/game', function(req, res, next){
+	res.status(200).render('game');
+});
 
-app.use(express.static('public')); // any files in public can be requested and will be returned.
+app.get('/leaderboard', function(req, res, next){
+	clonedLeaderboard = leaderboard.slice(0);
+	for (var i = 0; i < clonedLeaderboard.length; i++){
+		clonedLeaderboard['rank'] = i+1;
+	}
+	res.status(200).render('leaderboard', {
+		highscoreData: clonedLeaderboard
+	});
+});
+
+app.get('/about', function(req, res, next){
+	res.status(200).render('about');
+});
 
 app.get('*', function (req, res, next){
 	// if the file requested does not have a get setup or is not static we send the 404.html page
 	// and the status of 404. 
 	// ATM 404.html doesn't exist.
-	res.status(404).sendFile(__dirname + "/public/404.html");
+	res.status(404).render('404');
 });
 
 //////End///////////////--File Hosting--///////////////////////////////////////////////
