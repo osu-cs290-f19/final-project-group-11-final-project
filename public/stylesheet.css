@@ -1,0 +1,111 @@
+/*Fonts*/
+@font-face {
+  font-family: "Lemon Milk";
+  src: url("css/LemonMilk.otf")
+}
+
+@font-face {
+  font-family: "Mollen";
+  src: url("css/Mollen.otf")
+}
+
+/*Sitewide Style*/
+/*Banner*/
+html {
+  background-color: #90d6cc;
+}
+.site-title {
+  text-align: center;
+  font-family: "Lemon Milk", Arial, sans-serif;
+  background-color: #5abdae;
+  padding: 0px;
+  border-color: #2da391;
+  text-shadow: 2px 2px #2da391
+}
+
+.site-title h3 {
+  font-size: 20px;
+
+}
+
+.site-title a {
+  text-decoration: none;
+  color: white;
+
+}
+
+.site-title img {
+  height: 50px;
+  flex: auto;
+  float: right;
+  display: inline-block;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #5abdae;
+  box-shadow: 0 3px #2da391;
+  border-radius: 5px;
+}
+
+/*Page Title*/
+h2 {
+  text-align: center;
+  font-family: "Lemon Milk", Arial, sans-serif;
+  color: white;
+  text-shadow: 2px 2px #2da391;
+  margin-top: 170px;
+
+}
+
+/*Buttons*/
+.button-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.button-container button {
+  height: 50px;
+  width: 200px;
+  background-color: #2da391;
+  border: 0px;
+  color: white;
+  font-family: "Mollen", sans-serif;
+  font-size: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 5px #278a79;
+}
+
+.button-container button:hover {
+  background-color: #5abdae;
+}
+
+.button-container button:active {
+  background-color: #5abdae;
+  box-shadow: 0 3px #278a79;
+  transform: translateY(2px);
+}
+
+
+/*About Page*/
+.about-container {
+  text-align: center;
+  font-family: "Mollen", sans-serif;
+  background-color: #5abdae;
+  padding: 10px;
+  color: white;
+  box-shadow: 0 3px #2da391;
+  border-radius: 5px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 4px;
+  border-color: #2da391;
+
+}
