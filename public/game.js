@@ -142,7 +142,6 @@ function send_game_choice (event) {
 			selected = "SCISSORS";
 			socket.send("w3");
 		}
-		highlightElements();
 		selectionClickable = false;
 	}
 }
@@ -172,6 +171,7 @@ socket.addEventListener('message', function (event) {
 			else if (selected == "SCISSORS"){
 				enemySelected = "ROCK";
 			}
+			highlightElements();
 			winstreakVar = 0;
 			updateWinstreak(winstreakVar);
 			gameFinish("LOSS");
@@ -188,12 +188,14 @@ socket.addEventListener('message', function (event) {
 			else if (selected == "SCISSORS"){
 				enemySelected = "PAPER";
 			}
+			highlightElements();
 			winstreakVar += 1;
 			updateWinstreak(winstreakVar);
 			gameFinish("WIN");
 		}
 		else {
 			enemySelected = selected;
+			highlightElements();
 			gameFinish("TIE");
 		}
 	}
