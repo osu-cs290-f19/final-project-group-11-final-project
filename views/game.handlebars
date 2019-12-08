@@ -1,0 +1,131 @@
+<script src="./game.js" charset="utf-8" defer></script>
+
+<h2>Good luck!</h2>
+
+<div>
+  <div id="win-streak-counter-container">
+	  Winstreak:
+	  <span id="win-streak-counter"></span>
+  </div>
+</div>
+
+<div class="bennybot-container">
+  <section id="weapons">
+
+	<div id="benny-rock">
+	  <div class="weapon-contents">
+		<div class="weapon-image-container">
+		  <img src="***INSERT LINK***" alt="Rock">
+		</div>
+		<div class="weapon-info-container">
+		  <span class="weapon-name">Rock</span>
+		</div>
+	  </div>
+	</div>
+
+  <div id="benny-paper">
+	<div class="weapon-contents">
+	  <div class="weapon-image-container">
+		<img src="***INSERT LINK***" alt="Paper">
+	  </div>
+	  <div class="weapon-info-container">
+		<span class="weapon-name">Paper</span>
+	  </div>
+	</div>
+  </div>
+
+  <div id="benny-scissors">
+	<div class="weapon-contents">
+	  <div class="weapon-image-container">
+		<img src="***INSERT LINK***" alt="Scissors">
+	  </div>
+	  <div class="weapon-info-container">
+		<span class="weapon-name">Scissors</span>
+	  </div>
+	</div>
+  </div>
+
+  </section>
+</div>
+
+
+
+<div class="player-container">
+  <section id="weapons">
+
+	<div id="player-rock">
+	  <div class="weapon-contents">
+		<div class="weapon-image-container">
+		  <img src="***INSERT LINK***" alt="Rock">
+		</div>
+		<div class="weapon-info-container">
+		  <span class="weapon-name">Rock</span>
+		</div>
+	  </div>
+	</div>
+
+  <div id="player-paper">
+	<div class="weapon-contents">
+	  <div class="weapon-image-container">
+		<img src="***INSERT LINK***" alt="Paper">
+	  </div>
+	  <div class="weapon-info-container">
+		<span class="weapon-name">Paper</span>
+	  </div>
+	</div>
+  </div>
+
+  <div id="player-scissors">
+	<div class="weapon-contents">
+	  <div class="weapon-image-container">
+		<img src="***INSERT LINK***" alt="Scissors">
+	  </div>
+	  <div class="weapon-info-container">
+		<span class="weapon-name">Scissors</span>
+	  </div>
+	</div>
+  </div>
+
+  </section>
+</div>
+
+<div id="outcome-popup" class="hidden">
+	<h3 id="outcome-text"></h3>
+</div>
+
+<div id="modal-backdrop" class="hidden"></div>
+<div id="submit-highscore-modal" class="hidden">
+  <div class="modal-dialog">
+
+    <div class="modal-header">
+      <h3>Congratulations! Your win-streak qualifies for the leaderboard!</h3>
+      <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="highscore-input-element">
+        <label for="playerName-input">Name</label>
+        <input type="text" id="playerName-input"></input>
+      </div>
+
+      <div>
+        ((show highscore here))
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" id="modal-cancel" class="modal-hide-button action-button">Cancel</button>
+      <button type="button" id="modal-submit" class="action-button">Submit Highscore</button>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="button-container">
+  <div><a href='/'><button>Home</button></a></div>
+  <div><a href='leaderboard'><button>Leaderboard</button></a></div>
+  <div><a href='about'><button>About</button></a></div>
+</div>
