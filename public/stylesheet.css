@@ -9,6 +9,11 @@
   src: url("css/Mollen.otf")
 }
 
+@font-face {
+  font-family: "Mollen Bold";
+  src: url("css/Mollen Bold.otf")
+}
+
 /*Sitewide Style*/
 /*Banner*/
 html {
@@ -96,8 +101,8 @@ h2 {
 
 .button-container button:active {
   background-color: #5abdae;
-  box-shadow: 0 3px #278a79;
-  transform: translateY(2px);
+  box-shadow: 0 2px #278a79;
+  transform: translateY(3px);
 }
 
 
@@ -108,6 +113,7 @@ h2 {
   background-color: #5abdae;
   padding: 10px;
   color: white;
+  font-size: 20px;
   box-shadow: 0 3px #2da391;
   border-radius: 5px;
   border-style: solid;
@@ -126,14 +132,36 @@ h2 {
 }
 
 .highlighted{
-	background-color: rgb(220, 220, 220);
+	background-color: #2da391;
+}
+
+#win-streak-counter-container {
+  text-align: center;
+  color: white;
+  width: 230px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-family: "Lemon Milk", Arial, sans-serif;
+  background-color: #5abdae;
+  padding: 0px;
+  border-color: #2da391;
+  text-shadow: 2px 2px #2da391
+  box-shadow: 0 3px #2da391;
+  border-radius: 5px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 4px;
+  border-color: #2da391;
 }
 
 .bennybot-container {
-  text-align: center;
-  font-family: "Mollen", sans-serif;
+  /*display: inline-block;*/
+  font-family: "Mollen Bold", sans-serif;
   background-color: #5abdae;
-  padding: 20px;
+  padding: 75px;
+  font-size: 25px;
   color: white;
   box-shadow: 0 3px #2da391;
   border-radius: 5px;
@@ -142,12 +170,36 @@ h2 {
   border-left-width: 0px;
   border-right-width: 4px;
   border-color: #2da391;
-  width: 50%;
-  margin: 0 auto;
+  width: 40%;
+  /*margin-left: 25%;
+  margin-right: -25%;*/
   text-align: center;
   margin-bottom: 150px;
-  padding: 60px;
+  justify-content: center;
 }
+
+.player-container {
+  /*display: inline-block;*/
+  font-family: "Mollen Bold", sans-serif;
+  background-color: #5abdae;
+  padding: 75px;
+  font-size: 25px;
+  color: white;
+  box-shadow: 0 3px #2da391;
+  border-radius: 5px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 4px;
+  border-color: #2da391;
+  width: 40%;
+  /*margin-left: 25%;
+  margin-right: -25%;*/
+  text-align: center;
+  margin-bottom: 150px;
+  justify-content: center;
+}
+
 
 .weapon-contents {
   height: 50px;
@@ -169,12 +221,15 @@ h2 {
   padding:5px;
 }
 
-.player-container {
+
+#outcome-popup {
   text-align: center;
-  font-family: "Mollen", sans-serif;
+  font-family: "Lemon Milk", sans-serif;
+  text-shadow: 2px 2px #2da391;
   background-color: #5abdae;
-  padding: 20px;
+  padding: 10px;
   color: white;
+  font-size: 20px;
   box-shadow: 0 3px #2da391;
   border-radius: 5px;
   border-style: solid;
@@ -182,20 +237,18 @@ h2 {
   border-left-width: 0px;
   border-right-width: 4px;
   border-color: #2da391;
-  width: 50%;
-  margin-top: 150px;
-  margin: 0 auto;
-  padding: 60px;
-  text-align: center;
+  width: 200px;
+  margin: auto;
 }
 
 
 /*Leaderboard Page*/
-.leaderboard-container{
+#leaderboard-container{
   text-align: center;
-  font-family: "Mollen", sans-serif;
+  font-family: "Mollen Bold", sans-serif;
   background-color: #5abdae;
-  padding: 10px;
+  padding: 20px;
+  font-size: 25px;
   color: white;
   box-shadow: 0 3px #2da391;
   border-radius: 5px;
@@ -204,11 +257,12 @@ h2 {
   border-left-width: 0px;
   border-right-width: 4px;
   border-color: #2da391;
-  width: 50%;
+  width: 30%;
   margin: auto;
+  margin-top: 130px;
 }
 
-.win-image-container img{
+/*.win-image-container img{
   height: 50px;
   flex: auto;
   margin-left: auto;
@@ -216,7 +270,7 @@ h2 {
   display:inline-block;
   margin:5px 20px;
   padding:0px;
-}
+}*/
 
 .highscore-1{
   text-align: center;
