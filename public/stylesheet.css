@@ -117,5 +117,115 @@ h2 {
   border-color: #2da391;
   width: 50%;
   margin: auto;
+}
 
+
+/*Game Page*/
+.hidden{
+	display: none;
+}
+
+.highlighted{
+	background-color: rgb(220, 220, 220);
+}
+
+.bennybot-container {
+  text-align: center;
+  font-family: "Mollen", sans-serif;
+  background-color: #5abdae;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 3px #2da391;
+  border-radius: 5px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 4px;
+  border-color: #2da391;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 150px;
+  padding: 60px;
+}
+
+.weapon-contents {
+  height: 50px;
+  flex: auto;
+  display:inline-block;
+  margin:0 auto;
+  padding:10px;
+  float: left;
+}
+
+.weapon-image-container img {
+  height: 50px;
+  flex: auto;
+  float: right;
+  margin-left: auto;
+  margin-right: auto;
+  display:inline-block;
+  margin:0 auto;
+  padding:5px;
+}
+
+.player-container {
+  text-align: center;
+  font-family: "Mollen", sans-serif;
+  background-color: #5abdae;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 3px #2da391;
+  border-radius: 5px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 4px;
+  border-color: #2da391;
+  width: 50%;
+  margin-top: 150px;
+  margin: 0 auto;
+  padding: 60px;
+  text-align: center;
+}
+
+
+/*Leaderboard Page*/
+.leaderboard-container{
+  text-align: center;
+  font-family: "Mollen", sans-serif;
+  background-color: #5abdae;
+  padding: 10px;
+  color: white;
+  box-shadow: 0 3px #2da391;
+  border-radius: 5px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 4px;
+  border-color: #2da391;
+  width: 50%;
+  margin: auto;
+}
+
+.win-image-container img{
+  height: 50px;
+  flex: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display:inline-block;
+  margin:5px 20px;
+  padding:0px;
+}
+
+.highscore-1{
+  text-align: center;
+  font-family: "Lemon Milk", Arial, sans-serif;
+  color: white;
+  font-size: 18px;
+  text-shadow: 2px 2px #2da391;
+}
+
+.highscore-info {
+  margin-top: 10px;
 }
